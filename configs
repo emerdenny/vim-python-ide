@@ -1,20 +1,42 @@
-"
+" Sets how close cursor can get to top or bottom of screen
+set scrolloff=10
+
+" Sets tab to 2 spaces
+set tabstop=2
+
+" Sets shifts (Shift < or >) to match whatever tab is
+set shiftwidth=0
+
+" Changes Vim line number color
+highlight LineNr ctermfg=grey
+
+" Changes Vim gutter color
+highlight SignColumn ctermfg=0 ctermbg=0
+
+" Changes visual mode color
+highlight Visual cterm=NONE ctermbg=0 ctermfg=NONE guibg=Grey40
+
+" Removes end of file tildes
+highlight EndOfBuffer ctermfg=black ctermbg=black
+
 " Theme options
 set t_Co=256
-colorscheme Monokai
-set background=dark    " Setting dark mode
 """ Hilight search and set numbers
 set hlsearch
 highlight Search guibg=#af005f ctermbg=125
 """" clear highlight with <esc> after a search
 nnoremap <C-h> :noh<return>
-set number
+
+"#### begin 'jeffkreeftmeijer/vim-numbertoggle' configs
+set number norelativenumber
 
 set cc=80
 
 " Airline configuration
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
+let g:airline_theme = 'deus'
 
 " Nerdtree configuration
 map <C-n> :NERDTreeToggle<CR>
@@ -23,12 +45,6 @@ autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-
-" Switching between buffers
-" Set commands to switching between buffers
-:nnoremap <Tab> :bnext!<CR>
-:nnoremap <S-Tab> :bprevious!<CR>
-:nnoremap <C-X> :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " File searchs
 map <C-p> :Files<CR>
@@ -45,6 +61,18 @@ let g:ale_linters = {
 	\   'python': ['flake8'],
 	\}
 let g:ale_set_highlights = 0
+
+"#### end 'tmsvg/pear-tree' configs
+let g:pear_tree_pairs = {
+            \ '(': {'closer': ')'},
+            \ '[': {'closer': ']'},
+            \ '{': {'closer': '}'},
+            \ "'": {'closer': "'"},
+            \ '"': {'closer': '"'},
+						\ '<*>': {'closer': '</*>'}
+            \ }
+imap <silent> <C-l> <Plug>(PearTreeJump)
+"#### end 'tmsvg/pear-tree' configs
 
 " Fix keys
 set backspace=2
